@@ -1,6 +1,40 @@
-# Getting Started with Create React App
+# Getting Started with MediaHub React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MediaHub is a product designed and developed by Neopraxis.
+This  platform will provide media sharing facility between business and customers.
+
+----
+---
+# Developer Document
+1. Fork this project to your repository
+2. Download Forked repository to your device
+3. Checkout to "development" branch
+    * ```git checkout development```
+4. If you are working on a new feature, create new branch named as the name of the feature. (this should be made from development branch)
+    * create and checkout to that branch
+        * ```git branch <new-feature-branch-name>```
+        * ```git checkout <new-feature-branch-name>```
+    * or you can use this single command instead of the above two 
+        * ```git checkout -b <new-feature-branch-name>```
+4. If you are working on existing feature, checkout to that specific branch
+    * ```git checkout <branch-name>```
+5. Code your changes only on that specific branch **not on development branch**
+5. Commit your work daily
+    * ```git add .```
+    * ```git commit -m <commit-message>```
+6. After finilizing the work, just **document your code using inline commands**
+7. Test your code and working
+8. Only if you are completed. It's the time to merge the your branch to "development" branch. 
+    * for that you need to fetch the latest development branch to your local system
+    * ```git checkout development```
+    * ```git pull```
+    * now merge your branch to development branch
+    * ```git merge <branch-name>```
+9. Upload to your cloud repository
+    * ```git push origin development```
+10. Make a pull request to this repository
+
+
 
 ## Available Scripts
 
