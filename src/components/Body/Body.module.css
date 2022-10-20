@@ -1,0 +1,4 @@
+.rootContainer {
+    @apply w-full;
+    min-height: 75vh;
+}

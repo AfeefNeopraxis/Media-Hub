@@ -1,0 +1,7 @@
+.rootContainer {
+    @apply w-full h-full m-2;
+}
+
+.logo{
+    @apply flex flex-wrap justify-center items-center w-10 h-10 bg-black text-white text-base font-bold rounded-full;
+}

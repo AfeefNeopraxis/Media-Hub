@@ -1,26 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import Body from "./components/Body";
+import Card from "./components/Card";
+import HeadBar from "./components/HeadBar";
+import Layout from "./components/Layout";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline text-red-400">
-        Hello world!
-      </h1>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-full h-full bg-[#F2EBE1] p-10">
+      <Card>
+        <Layout>
+          <Navbar />
+          <div className="w-96 bg-[#F2EBE1]">
+
+          </div>
+          <Body />
+        </Layout>
+      </Card>
     </div>
   );
 }

@@ -1,0 +1,6 @@
+.rootContainer {
+    @apply w-full bg-white flex ;
+    min-height: 85vh;
+    
+}
+
