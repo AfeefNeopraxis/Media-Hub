@@ -7,7 +7,7 @@ This  platform will provide media sharing facility between business and customer
 ---
 # Developer Document
 1. Fork this project to your repository
-2. Download Forked repository to your device
+2. Clone your forked repository to your device
 3. Checkout to "development" branch
     * ```git checkout development```
 4. If you are working on a new feature, create new branch named as the name of the feature. (this should be made from development branch)
