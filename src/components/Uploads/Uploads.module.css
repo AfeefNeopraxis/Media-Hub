@@ -1,0 +1,25 @@
+.btncontainer{
+   @apply  h-32 ; 
+} 
+
+.uploadbtn{
+    @apply  bg-amber-400 font-medium m-7  py-2 px-4 rounded hover:bg-amber-500;
+}
+
+.uploadcontainer{
+    @apply ml-2.5;
+} 
+
+.uploadtitle {
+    @apply my-2 font-bold text-lg  border-b-8 border-white w-11/12  ;
+}
+
+.list li{
+    @apply text-gray-500 pb-2.5 hover:bg-slate-300;
+}
+
+.list li:hover{
+    color: #000;
+    font-weight: bold;
+    background-color: #CAC3B8;
+}
