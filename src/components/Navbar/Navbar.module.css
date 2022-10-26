@@ -8,10 +8,13 @@
 }
 
 .navbody {
-    @apply flex-grow flex justify-center flex-col text-xs font-bold;
+    @apply flex-grow flex justify-center flex-col text-xs font-bold ;
     flex-grow: 1;
 }
 
 .navItem {
-    @apply w-14 h-14 flex items-center justify-center flex-col;
+    @apply w-14 h-14 flex items-center justify-center flex-col ;
+}
+.navItem:hover{
+    background-color: #CAC3B8;
 }
