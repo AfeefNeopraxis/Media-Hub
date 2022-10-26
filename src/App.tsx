@@ -3,6 +3,9 @@ import Card from "./components/Card";
 import HeadBar from "./components/HeadBar";
 import Layout from "./components/Layout";
 import Navbar from "./components/Navbar";
+import Uploads from "./components/Uploads/Uploads";
+
+
 
 function App() {
   return (
@@ -11,7 +14,7 @@ function App() {
         <Layout>
           <Navbar />
           <div className="w-96 bg-[#F2EBE1]">
-
+            <Uploads />
           </div>
           <Body />
         </Layout>
@@ -19,5 +22,7 @@ function App() {
     </div>
   );
 }
+
+
 
 export default App;
