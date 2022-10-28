@@ -1,28 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import Body from "./components/Body";
+import Card from "./components/Card";
+import Layout from "./components/Layout";
+import Navbar from "./components/Navbar";
+import Uploads from "./components/Uploads/Uploads";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom'
+
+import Apps from "./components/Apps/Apps";
+import Home from "./components/Home/Home";
+
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline text-red-400">
-        Hello world!
-      </h1>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-full h-full bg-[#F2EBE1] p-10">
+      <BrowserRouter>
+        <Card>
+          <Layout>
+            <Navbar />
+            <div className="w-96 bg-[#F2EBE1]">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/upload" element={<Uploads />} />
+                <Route path="/apps" element={<Apps />} />
+                <Route path="/theme" element={<Home />} />
+                <Route path="/settings" element={<Home />} />
+                <Route path="/users" element={<Home />} />
+              </Routes>
+            </div>
+            <Body />
+          </Layout>
+        </Card>
+      </BrowserRouter>
     </div>
   );
 }
+
+
 
 export default App;
