@@ -4,14 +4,17 @@
 }
 
 .logo {
-    @apply bg-black text-white rounded-full w-10 h-10 m-auto flex items-center justify-center;
+    @apply bg-black text-white rounded-full w-14 h-14 m-auto flex items-center justify-center;
 }
 
 .navbody {
-    @apply flex-grow flex justify-center flex-col;
+    @apply flex-grow flex justify-center flex-col text-xs font-bold ;
     flex-grow: 1;
 }
 
 .navItem {
-    @apply w-14 h-14 flex items-center justify-center flex-col;
+    @apply w-14 h-14 flex items-center justify-center flex-col ;
+}
+.navItem:hover{
+    background-color: #CAC3B8;
 }
