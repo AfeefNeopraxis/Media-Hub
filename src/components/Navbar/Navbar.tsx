@@ -10,7 +10,7 @@ const Navbar = ({ children }: any) => {
                 <div className={s.logo}>LOGO</div>
             </HeadSection>
             <div className={s.navbody}>
-                <Link to='/'>
+                {/* <Link to='/'>
                   <NavItem name="Home" iconUrl="./Icons/navbar/home.svg" />
                 </Link>
                 <Link to='/upload'>
@@ -27,7 +27,7 @@ const Navbar = ({ children }: any) => {
                 </Link>
                 <Link to='/users'>
                     <NavItem name="Users" iconUrl="./Icons/navbar/user.svg" />
-                </Link>
+                </Link> */}
             </div>
         </div>
         </div>
