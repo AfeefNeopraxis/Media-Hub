@@ -1,0 +1,15 @@
+.container{
+    background-color: rgb(255, 255, 255);
+    height: 500px;
+    margin: 30px;
+}
+.inputlabel{
+    @apply block text-sm font-medium text-slate-700 font-bold;
+}
+.inputbox{
+    @apply  mt-1 px-3 py-2 w-full rounded-md  bg-white border border-slate-300 placeholder-slate-400  sm:text-sm  mb-2.5;
+}
+.textarea{
+    @apply block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300  dark:border-slate-300 placeholder-slate-400 dark:text-black mb-2.5 resize-none;
+}
+
