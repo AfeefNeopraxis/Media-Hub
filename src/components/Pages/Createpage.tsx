@@ -12,7 +12,7 @@ const Pages = () => {
                 <textarea rows={8} className={p.textarea} placeholder="Describe your page here,these will shown for your users while they are browsing these page......"></textarea>
 
                 <div>
-                    <table className="table-fixed w-full">
+                    <table className="table-fixed w-full h-36">
                         <tbody>
                             <tr>
                                 <td><h2 className='font-bold text-sm'>Content type</h2></td>
