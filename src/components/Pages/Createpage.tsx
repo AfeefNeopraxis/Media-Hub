@@ -1,6 +1,25 @@
+
 import p from './Pages.module.css'
 
+
+type MultipleSelection = {
+    label: string,
+    options: Options[],
+}
+
+type Options = {
+    name: string,
+    disabled?: boolean,
+}
+
 const Pages = () => {
+
+    var choices: MultipleSelection[] = [
+        { label: "Content type", options: [{ name: "Video" }, { name: "Image" }, { name: "Docs" },] },
+        { label: "Choose who can upload", options: [{ name: "My users" }, { name: "Only me" }, { name: "My staff", disabled: true },] },
+        { label: "Choose template", options: [{ name: "Default" }, { name: "Template 1", disabled: true }, { name: "Template 2", disabled: true },] },
+    ]
+
     return (
         <div className={p.container}>
             <form>
@@ -14,41 +33,17 @@ const Pages = () => {
                 <div>
                     <table className="table-fixed w-full h-36">
                         <tbody>
-                            <tr>
-                                <td><h2 className='font-bold text-sm'>Content type</h2></td>
-                                <td>
-                                    <input type="checkbox" className="w-4 h-4" />
-                                    <label className="ml-2 text-sm font-medium  dark:text-slate-700">Video</label>
-                                </td>
-                                <td>
-                                    <input type="checkbox" className="w-4 h-4 bg-gray-100 rounded border-gray-300   dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label className="ml-2 text-sm font-medium  dark:text-slate-700">Image</label>
-                                </td>
-                                <td>
-                                    <input type="checkbox" className="w-4 h-4 bg-gray-100 rounded border-gray-300   dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label className="ml-2 text-sm font-medium  dark:text-slate-700">Docs</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><h2 className='font-bold text-sm'>Choose who can upload</h2></td>
-                                <td>
-                                    <input type="checkbox" className="w-4 h-4" />
-                                    <label className="ml-2 text-sm font-medium  dark:text-slate-700">My users</label>
-                                </td>
-                                <td><input type="checkbox" className="w-4 h-4 bg-gray-100 rounded border-gray-300   dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label className="ml-2 text-sm font-medium  dark:text-slate-700">Only me</label></td>
-                                <td><input disabled type="checkbox" className="w-4 h-4  bg-gray-100 rounded border-gray-300   dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label className="ml-2 text-sm font-medium  dark:text-slate-700">My staff</label></td>
-                            </tr>
-                            <tr>
-                                <td><h2 className='font-bold text-sm'>Choose template</h2></td>
-                                <td> <input checked type="checkbox" className="w-4 h-4" />
-                                    <label className="ml-2 text-sm font-medium  dark:text-slate-700">Default</label></td>
-                                <td><input disabled type="checkbox" className="w-4 h-4 bg-gray-100 rounded border-gray-300   dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label className="ml-2 text-sm font-medium  dark:text-slate-700">Template 1</label></td>
-                                <td> <input disabled type="checkbox" className="w-4 h-4  bg-gray-100 rounded border-gray-300   dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label className="ml-2 text-sm font-medium  dark:text-slate-700">Template 2</label></td>
-                            </tr>
+                            {choices.map((choice) => {
+                                return (<tr>
+                                    <td><h2 className='font-bold text-sm'>{choice.label}</h2></td>
+                                    {choice.options.map(option => {
+                                        return (<td>
+                                            <input type="checkbox" className="w-4 h-4" disabled={option.disabled} />
+                                            <label className="ml-2 text-sm font-medium  dark:text-slate-700">{option.name}</label>
+                                        </td>)
+                                    })}
+                                </tr>)
+                            })}
                         </tbody>
                     </table>
                 </div>
