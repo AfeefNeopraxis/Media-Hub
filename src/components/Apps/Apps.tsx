@@ -2,7 +2,6 @@ import Button from "../Common/Button";
 import Center from "../Common/Center";
 import s from "../Uploads/Uploads.module.css";
 
-
 const Apps = () => {
   return (
     <div>
