@@ -2,9 +2,8 @@ import HeadSection from "../HeadSection";
 import s from "./Body.module.css";
 import Pages from "../Pages/Createpage";
 import { useState } from "react";
-import Home from "../Home/Home";
 import TabBar from "../Common/TabBar";
-import Uploads from "../Uploads/Uploads";
+import Uploads from "../../pages/Uploads";
 import CommingSoon from "../../pages/commingsoon";
 
 type TabAndBody = {
