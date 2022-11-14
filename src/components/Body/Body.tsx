@@ -5,6 +5,7 @@ import { useState } from "react";
 import TabBar from "../Common/TabBar";
 import Uploads from "../../pages/Uploads";
 import CommingSoon from "../../pages/commingsoon";
+import EmptyBox from "../EmptyBox/EmptyBox";
 
 type TabAndBody = {
   tabName: String;
@@ -15,7 +16,7 @@ const Body = ({ children }: any) => {
   const tabAndBody: TabAndBody[] = [
     { tabName: "Edit", body: <Pages /> },
     { tabName: "Uploads", body: <Uploads /> },
-    { tabName: "View", body: <CommingSoon /> },
+    { tabName: "View", body: <EmptyBox /> },
     { tabName: "Comming_soon", body: <CommingSoon /> },
   ];
 
