@@ -30,7 +30,7 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase packages
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 /// All helping functions are sotred here after
 ///////////////////////////////////////////////////////////////////////////////////////////////////

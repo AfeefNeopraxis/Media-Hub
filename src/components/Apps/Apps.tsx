@@ -1,15 +1,24 @@
+import { useSignOut } from "react-firebase-hooks/auth";
+import { auth } from "../../helpers/firebase_utils";
 import Button from "../Common/Button";
 import Center from "../Common/Center";
 import s from "../Uploads/Uploads.module.css";
 
 const Apps = () => {
+  const [signOut, loading, error] = useSignOut(auth);
+
+  if (error) return <p>Error: {error.message}</p>;
+  if (loading) return <p>Loading from apps...</p>;
   return (
     <div>
       <Center className="h-28">
         <Button
-          label="Create New Page"
-          onClick={() => {
-            alert("you just clicked this button");
+          label="Logout"
+          onClick={async () => {
+            const success = await signOut();
+            if (success) {
+              alert("You are sign out");
+            }
           }}
         />
       </Center>
