@@ -12,8 +12,9 @@ const TabBar = ({
 
   return (
     <div className="flex absolute bottom-0">
-      {tabs.map((tabName) => (
+      {tabs.map((tabName, index) => (
         <TabItem
+          key={"item-" + index}
           selected={tabName === selected}
           name={tabName}
           onClickTab={(seletedTab) => {
@@ -26,15 +27,13 @@ const TabBar = ({
   );
 };
 
-const TabItem = ({
-  selected,
-  name,
-  onClickTab,
-}: {
+type TabItemProps = {
   selected: boolean;
   name: String;
   onClickTab: (selectedTabName: String) => void;
-}) => {
+};
+
+const TabItem: React.FC<TabItemProps> = ({ selected, name, onClickTab }) => {
   return (
     <Center
       onClick={() => onClickTab(name)}
