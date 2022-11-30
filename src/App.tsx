@@ -17,27 +17,25 @@ function App() {
   return (
     <div className="w-full h-full bg-[#F2EBE1] p-10">
       <Card>
-        <Layout>
-          <Navbar />
-          <div className="w-96 bg-[#F2EBE1]">
-            <Routes>
-              {!user ? (
-                <>
-                  <Route path="/login" element={<Login />} />
-                  <Route path="*" element={<Navigate to="/login" />} />
-                </>
-              ) : (
-                <>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/edit" element={<div>edit</div>} />
-                  <Route path="/pages" element={<div>pages</div>} />
-                  <Route path="/upload" element={<div>uploads</div>} />
-                </>
-              )}
-            </Routes>
-          </div>
-          <Body />
-        </Layout>
+        {!user ? (
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="*" element={<Navigate to="/login" />} />
+          </Routes>
+        ) : (
+          <Layout>
+            <Navbar />
+            <div className="w-96 bg-[#F2EBE1]">
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/edit" element={<div>edit</div>} />
+                <Route path="/pages" element={<div>pages</div>} />
+                <Route path="/upload" element={<div>uploads</div>} />
+              </Routes>
+            </div>
+            <Body />
+          </Layout>
+        )}
       </Card>
     </div>
   );
