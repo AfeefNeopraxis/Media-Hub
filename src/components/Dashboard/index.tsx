@@ -2,13 +2,13 @@ import { useSignOut } from "react-firebase-hooks/auth";
 import { auth } from "../../helpers/firebase_utils";
 import Button from "../Common/Button";
 import Center from "../Common/Center";
-import s from "../Uploads/Uploads.module.css";
+import s from "./Dashboard.module.css";
 
-const Apps = () => {
+const Dashboard = () => {
   const [signOut, loading, error] = useSignOut(auth);
 
   if (error) return <p>Error: {error.message}</p>;
-  if (loading) return <p>Loading from apps...</p>;
+  if (loading) return <p>Loading from Dashboard...</p>;
   return (
     <div>
       <Center className="h-28">
@@ -22,8 +22,8 @@ const Apps = () => {
           }}
         />
       </Center>
-      <div className={s.uploadcontainer}>
-        <h1 className={s.uploadtitle}>PAGES</h1>
+      <div className={s.container}>
+        <h1 className={s.title}>PAGES</h1>
         <ul className={s.list}>
           <li>American Video Hub</li>
           <li>Chines Press Hub</li>
@@ -35,4 +35,4 @@ const Apps = () => {
   );
 };
 
-export default Apps;
+export default Dashboard;

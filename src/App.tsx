@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import Apps from "./components/Apps/Apps";
+import Dashboard from "./components/Dashboard";
 import Login from "./pages/login";
 import { auth } from "./helpers/firebase_utils";
 
@@ -28,7 +28,7 @@ function App() {
                 </>
               ) : (
                 <>
-                  <Route path="/" element={<Apps />} />
+                  <Route path="/" element={<Dashboard />} />
                   <Route path="/edit" element={<div>edit</div>} />
                   <Route path="/pages" element={<div>pages</div>} />
                   <Route path="/upload" element={<div>uploads</div>} />
