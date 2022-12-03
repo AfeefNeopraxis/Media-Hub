@@ -5,8 +5,9 @@ import Navbar from "./components/Navbar";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import Dashboard from "./components/Dashboard";
-import Login from "./pages/login";
+
+import Navigation from "./components/Navigation";
+import Login from "./pages/LoginPage/LoginPage";
 import { auth } from "./helpers/firebase_utils";
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
             <Navbar />
             <div className="w-96 bg-[#F2EBE1]">
               <Routes>
-                <Route path="/" element={<Dashboard />} />
+                <Route path="/" element={<Navigation />} />
                 <Route path="/edit" element={<div>edit</div>} />
                 <Route path="/pages" element={<div>pages</div>} />
                 <Route path="/upload" element={<div>uploads</div>} />

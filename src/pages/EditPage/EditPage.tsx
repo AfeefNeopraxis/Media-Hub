@@ -1,4 +1,4 @@
-import p from "./Pages.module.css";
+import p from "./EditPage.module.css";
 
 type MultipleSelection = {
   label: string;

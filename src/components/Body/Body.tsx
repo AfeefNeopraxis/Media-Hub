@@ -1,10 +1,10 @@
 import HeadSection from "../HeadSection";
 import s from "./Body.module.css";
-import Pages from "../Pages/Createpage";
+import EditPage from "../../pages/EditPage";
 import { useState } from "react";
 import TabBar from "../Common/TabBar";
-import Uploads from "../../pages/Uploads";
-import CommingSoon from "../../pages/commingsoon";
+import Uploads from "../../pages/UploadsPage/UploadsPage";
+import CommingSoon from "../../pages/CommingSoonPage";
 import EmptyBox from "../EmptyBox/EmptyBox";
 
 type TabAndBody = {
@@ -14,7 +14,7 @@ type TabAndBody = {
 
 const Body = ({ children }: any) => {
   const tabAndBody: TabAndBody[] = [
-    { tabName: "Edit", body: <Pages /> },
+    { tabName: "Edit", body: <EditPage /> },
     { tabName: "Uploads", body: <Uploads /> },
     { tabName: "View", body: <EmptyBox /> },
     { tabName: "Comming_soon", body: <CommingSoon /> },
