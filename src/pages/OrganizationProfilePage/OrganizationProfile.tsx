@@ -21,7 +21,7 @@ const OrganizationProfile = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   if (!userData) {
     return (
