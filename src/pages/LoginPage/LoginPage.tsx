@@ -14,7 +14,10 @@ const Login = () => {
           signInWithPopup(auth, new GoogleAuthProvider()).then((result) => {
             // The user is authenticated now,
             // So we can redirect them back to thier prefered route
-            navigate("/");
+            if (result.user) {
+              // navigate("/account");
+              navigate("/");
+            }
           });
         }}
       >

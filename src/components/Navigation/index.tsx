@@ -16,6 +16,7 @@ const Navigation = () => {
       </Center>
       <div className={s.container}>
         <h1 className={s.title}>PAGES</h1>
+        {/* TODO - Get the pages from cloud and show here */}
         <ul className={s.list}>
           <li>American Video Hub</li>
           <li>Chines Press Hub</li>

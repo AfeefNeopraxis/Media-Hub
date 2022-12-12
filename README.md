@@ -1,7 +1,7 @@
 # Getting Started with MediaHub React App
 
 MediaHub is a product designed and developed by Neopraxis.
-This  platform will provide media sharing facility between business and customers.
+This  platform will provide media sharing facility between organization and customers.
 
 ----
 ---

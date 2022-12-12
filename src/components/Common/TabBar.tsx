@@ -1,27 +1,21 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Tab } from "../Body/Body";
 import Center from "./Center";
 
-const TabBar = ({
-  tabs,
-  onSelectTab,
-}: {
-  tabs: String[];
-  onSelectTab: (selectedTabName: number) => void;
-}) => {
-  const [selected, setSelected] = useState(tabs.at(0));
+const TabBar = ({ tabs }: { tabs: Tab[] }) => {
+  const [selected, setSelected] = useState(tabs.at(0)?.name);
 
   return (
     <div className="flex absolute bottom-0">
-      {tabs.map((tabName, index) => (
-        <TabItem
-          key={"item-" + index}
-          selected={tabName === selected}
-          name={tabName}
-          onClickTab={(seletedTab) => {
-            onSelectTab(tabs.indexOf(seletedTab));
-            setSelected(seletedTab);
-          }}
-        />
+      {tabs.map((tab, index) => (
+        <Link key={"item-" + index} to={tab.link}>
+          <TabItem
+            selected={tab.name === selected}
+            name={tab.name}
+            onClickTab={setSelected}
+          />
+        </Link>
       ))}
     </div>
   );

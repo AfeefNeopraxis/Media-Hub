@@ -1,3 +1,7 @@
+import InputText, {
+  InputCheckbox,
+  InputTextArea,
+} from "../../components/Common/FormInputs";
 import p from "./EditPage.module.css";
 
 type MultipleSelection = {
@@ -37,48 +41,29 @@ const Pages = () => {
   return (
     <div className={p.container}>
       <form>
-        <label className="block">
-          <span className={p.inputlabel}>Title</span>
-          <input
-            type="text"
-            name="title"
-            className={p.inputbox}
-            placeholder="Enter your title"
-          />
-        </label>
-        <label className={p.inputlabel}>Description</label>
-        <textarea
-          rows={8}
-          className={p.textarea}
+        <InputText label="Title" />
+        <InputTextArea
+          label="Description"
           placeholder="Describe your page here,these will shown for your users while they are browsing these page......"
-        ></textarea>
-
+        />
         <div>
           <table className="table-fixed w-full h-36">
             <tbody>
-              {choices.map((choice, choiceIndex) => {
-                return (
-                  <tr key={"choice-" + choiceIndex}>
-                    <td>
-                      <h2 className="font-bold text-sm">{choice.label}</h2>
+              {choices.map((choice, choiceIndex) => (
+                <tr key={"choice-" + choiceIndex}>
+                  <td>
+                    <h2 className="font-bold text-sm">{choice.label}</h2>
+                  </td>
+                  {choice.options.map((option, optionIndex) => (
+                    <td key={"option-" + optionIndex}>
+                      <InputCheckbox
+                        label={option.name}
+                        disabled={option.disabled}
+                      />
                     </td>
-                    {choice.options.map((option, optionIndex) => {
-                      return (
-                        <td key={"option-" + optionIndex}>
-                          <input
-                            type="checkbox"
-                            className="w-4 h-4"
-                            disabled={option.disabled}
-                          />
-                          <label className="ml-2 text-sm font-medium  dark:text-slate-700">
-                            {option.name}
-                          </label>
-                        </td>
-                      );
-                    })}
-                  </tr>
-                );
-              })}
+                  ))}
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

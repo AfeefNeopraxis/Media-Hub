@@ -4,7 +4,7 @@
     margin: 30px;
 }
 .inputlabel{
-    @apply block text-sm font-medium text-slate-700 font-bold;
+    @apply block text-sm text-slate-700 font-bold;
 }
 .inputbox{
     @apply  mt-1 px-3 py-2 w-full rounded-md  bg-white border border-slate-300 placeholder-slate-400  sm:text-sm  mb-2.5;
