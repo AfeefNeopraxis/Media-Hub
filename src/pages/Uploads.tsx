@@ -1,5 +1,11 @@
-const uploadData = [
-  {
+import  SmartImage  from "../components/SmartImage/SmartImage";
+
+const uploadData: Array<{ 
+    sectionName: string,
+    contents: { 
+        imageSrc: string,
+        title: string,
+    }[]}> = [{
     sectionName: "User Uploads",
     contents: [
       {
@@ -106,6 +112,7 @@ const UploadSection = ({
   sectionName: string;
   contents: { imageSrc: string; title: string }[];
 }) => {
+  
   return (
     <div className="container mx-auto px-2 text-center">
       <p className="font-bold py-1 text-xs">{sectionName}</p>
@@ -125,7 +132,7 @@ const ImageTile = ({
 }) => {
   return (
     <div>
-      <img src={imageSrc} alt={title} />
+      <SmartImage src={imageSrc} alt={title}/>
       <p className=" text-sm">sample description of image</p>
     </div>
   );
