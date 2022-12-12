@@ -1,4 +1,4 @@
-import Center from "../components/Common/Center";
+import Center from "../../components/Common/Center";
 
 const CommingSoon = () => {
   return (

@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+import { getFirestore } from "firebase/firestore/lite";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,8 +22,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase packages
-const db = getFirestore(app);
 export const auth = getAuth(app);
+export const db = getFirestore(app);
 
 /// All helping functions are sotred here after
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,11 +39,9 @@ const provider = new GoogleAuthProvider();
 export const signInWithGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
-      console.log(result);
       const name = result.user.displayName || "";
       const email = result.user.email || "";
       const profilepic = result.user.photoURL || "";
-      console.log(name, email, profilepic);
       // storeing to the local storage
       localStorage.setItem("name", name);
       localStorage.setItem("email", email);
@@ -57,21 +55,3 @@ export const signInWithGoogle = () => {
 export const signInWithGooglePopup = () => {
   return signInWithPopup(auth, provider);
 };
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * Firebase Firestore database helper
- */
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// Get a list of uploads from your database
-export async function getuploads() {
-  const uploadsCol = collection(db, "uploads");
-  const uploadSnapshot = await getDocs(uploadsCol);
-  const uploadList = uploadSnapshot.docs.map((doc) => doc.data());
-  console.log("we are about to print uploadList");
-  console.log(uploadList);
-  return uploadList;
-}
