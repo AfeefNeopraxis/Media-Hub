@@ -1,6 +1,6 @@
 // This file contains the Inputs for all forms
 
-import { LegacyRef, MutableRefObject } from "react";
+import { LegacyRef } from "react";
 
 // Inclues
 // Text, TextArea, Checkbox,

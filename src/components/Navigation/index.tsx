@@ -28,7 +28,7 @@ const Navigation = () => {
         <Button
           label="Logout"
           onClick={async () => {
-            const success = await signOut();
+            await signOut();
           }}
         />
       </Center>
