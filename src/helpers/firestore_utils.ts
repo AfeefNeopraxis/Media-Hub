@@ -6,14 +6,15 @@ import {
   getDocs,
   setDoc,
   addDoc,
-} from "firebase/firestore/lite";
-import { idAndName, userDataModel } from "../model/firestoreDataModels";
+} from "firebase/firestore";
+import { idName } from "../model/idAndName";
+import { userData } from "../model/userData";
 import { auth, db } from "./firebase_utils";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-/**
+/*
  * Firebase Firestore database helper
  */
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -29,16 +30,15 @@ export async function getUserData() {
 }
 
 // save or update the current user data in firebase firestore
-export async function saveUserData(orgName: string | undefined) {
-  // Its is important to have atleast one organization
-  if (!orgName) return;
+export async function saveUserData(orgName: string) {
+  // It is important to have atleast one organization
 
   const currentUserDoc = doc(db, "users", `${auth.currentUser?.uid}`);
 
   const newOrgId = await createNewOrganization(orgName);
 
-  const orgIdName: idAndName = { id: newOrgId, name: orgName };
-  const userData: userDataModel = {
+  const orgIdName: idName = { id: newOrgId, name: orgName };
+  const userData: userData = {
     name: `${auth.currentUser?.displayName}`,
     email: `${auth.currentUser?.email}`,
     organizations: [orgIdName],
@@ -70,3 +70,8 @@ export async function getAllDocs() {
   const docList = collectionSnapshot.docs.map((doc) => doc.data());
   return docList;
 }
+
+export type Converter<T> = {
+  toFirestore: (model: T) => any;
+  fromFirestore: (snapshot: any, options: any) => T;
+};

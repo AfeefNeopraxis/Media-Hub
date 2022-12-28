@@ -5,12 +5,14 @@ const Center = ({
   children,
   vertical = true,
   horizontal = true,
+  fullScreen = false,
   className = "",
   onClick,
 }: {
   children: any;
   vertical?: boolean;
   horizontal?: boolean;
+  fullScreen?: boolean;
   className?: string;
   onClick?: () => void;
 }) => {
@@ -26,7 +28,8 @@ const Center = ({
 
   // Position all childNodes into the center of the parent node
   const parentClasess = classNames(
-    "flex w-full h-full",
+    "flex",
+    fullScreen ? "h-screen w-screen" : "h-full w-full",
     onClick ? "cursor-pointer" : "",
     horizontal ? "justify-center" : "",
     vertical ? "items-center" : "",
@@ -38,8 +41,8 @@ const Center = ({
       {typeof children === "string"
         ? children
         : children.length
-        ? [...children].map((child) => absoluteNode(child))
-        : absoluteNode(children)}
+          ? [...children].map((child) => absoluteNode(child))
+          : absoluteNode(children)}
     </div>
   );
 };

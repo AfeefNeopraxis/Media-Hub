@@ -1,15 +1,21 @@
 // import { Link } from 'react-router-dom'
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../helpers/context/appContext";
 import HeadSection from "../HeadSection";
 import s from "./RightSideNavbar.module.css";
 
 const RightSideNavbar = ({ children }: any) => {
+  const appContext = useContext(AppContext)
+  
+  const orgName = appContext.user?.organizations?.at(0)?.name.substring(0,1);
+
   return (
     <div className="w-16">
       <div className={s.rootContainer}>
         <HeadSection>
           <Link to="/">
-            <div className={s.logo}>LOGO</div>
+            <div className={s.logo}>{orgName}</div>
           </Link>
         </HeadSection>
         <div className={s.navbody}>
