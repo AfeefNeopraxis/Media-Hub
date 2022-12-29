@@ -94,7 +94,7 @@ const uploadData: Array<{
   },
 ];
 
-const Uploads = () => {
+const UploadsPage = () => {
   return (
     <div>
       <ToggleButton />
@@ -103,7 +103,7 @@ const Uploads = () => {
   );
 };
 
-export default Uploads;
+export default UploadsPage;
 
 const ToggleButton = () => {
   return (

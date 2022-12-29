@@ -1,4 +1,4 @@
-import { getDoc, doc } from "firebase/firestore";
+import { getDoc, doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase_utils";
 
 import { createContext, useEffect, useReducer, useRef } from "react";
@@ -8,12 +8,13 @@ import { userConverter, userData } from "../../model/userData";
 import Center from "../../components/Common/Center";
 import InputText from "../../components/Common/FormInputs";
 import Button from "../../components/Common/Button";
-import { saveUserData } from "../firestore_utils";
+import { createPage, saveUserData } from "../firestore_utils";
+import { idName } from "../../model/idAndName";
 
 
 type Action =
     { type: "pageFetchInitialized" } |
-    { type: "userFetched", user: userData | null } |
+    { type: "updateUser", user: userData | null } |
     { type: "pageFetchCompleted", page: (pageData & { id: string, orgId: string }) };
 
 type State = {
@@ -34,8 +35,13 @@ const initialValue: State = {
 
 // Create the context object and specify the type for the value
 export const AppContext =
-    createContext<State & { fetchPage: (pageId: string, organizationId: string) => void, }>({
-        ...initialValue, fetchPage: () => { },
+    createContext<
+        State & {
+            fetchPage: (pageId: string, organizationId: string) => void,
+            createPage: (pageName: string) => void,
+        }
+    >({
+        ...initialValue, fetchPage: () => { }, createPage: () => { },
     });
 
 
@@ -47,7 +53,7 @@ const reducer = (state: State, action: Action): State => {
         case "pageFetchCompleted":
             state.allFetchedPages.push(action.page)
             return { ...state, isPageLoading: false, currentPage: action.page }
-        case "userFetched":
+        case "updateUser":
             return { ...state, isUserLoading: false, user: action.user }
         default:
             throw new Error();
@@ -68,10 +74,10 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
 
         if (docSnap.exists()) {
             const user = docSnap.data();
-            dispatch({ type: "userFetched", user: user })
+            dispatch({ type: "updateUser", user: user })
         } else {
             // doc.data() will be undefined in this case
-            dispatch({ type: "userFetched", user: null })
+            dispatch({ type: "updateUser", user: null })
         }
     }
 
@@ -114,16 +120,32 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
         fetchUser();
     }, [])
 
+    const createFirebasePage = async (pageName: string) => {
+        var pageId = await createPage(pageName, state.user!.organizations!.at(0)!.id)
+        const pageIdName: idName = { id: pageId, name: pageName };
+
+        state.user?.organizations?.at(0)?.pages?.push(pageIdName)
+
+        // this is just rewriting all the content of the user
+        // this works fine now, but sometimes it will effect the smooth behaviour
+        const currentUserDoc = doc(db, "users", `${auth.currentUser?.uid}`);
+        setDoc(currentUserDoc, { ...state.user })
+
+        dispatch({ type: "updateUser", user: state.user })
+    }
 
     return (
-        <AppContext.Provider value={{ fetchPage, ...state }}>
-
+        <AppContext.Provider value={{
+            fetchPage, ...state, createPage: createFirebasePage
+        }}>
+            {/* currently loading the user data */}
             {state.isUserLoading && (
                 <Center fullScreen>
                     <p>
                         Fetching User Data</p>
                 </Center>)}
 
+            {/* loading completed but no user availble, so prompt to create the organization */}
             {!state.isUserLoading && !state.user && (
                 <Center fullScreen>
                     <form
@@ -144,6 +166,7 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
                     </form>
                 </Center>)}
 
+            {/* We have got the user and loading completed, Now we can show him the dashboard */}
             {!state.isUserLoading && state.user && children}
 
         </AppContext.Provider>

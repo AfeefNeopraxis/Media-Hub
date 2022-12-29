@@ -7,7 +7,6 @@ import {
   setDoc,
   addDoc,
 } from "firebase/firestore";
-import { idName } from "../model/idAndName";
 import { userData } from "../model/userData";
 import { auth, db } from "./firebase_utils";
 
@@ -37,11 +36,10 @@ export async function saveUserData(orgName: string) {
 
   const newOrgId = await createNewOrganization(orgName);
 
-  const orgIdName: idName = { id: newOrgId, name: orgName };
   const userData: userData = {
     name: `${auth.currentUser?.displayName}`,
     email: `${auth.currentUser?.email}`,
-    organizations: [orgIdName],
+    organizations: [{ id: newOrgId, name: orgName, pages: [] }],
   };
 
   return setDoc(currentUserDoc, userData);
@@ -49,8 +47,8 @@ export async function saveUserData(orgName: string) {
 
 // save organization
 async function createNewOrganization(orgName: string) {
-  const organizationCol = collection(db, "organizations");
-  var orgSnapshort = await addDoc(organizationCol, { name: orgName });
+  const pageCollection = collection(db, "organizations");
+  var orgSnapshort = await addDoc(pageCollection, { name: orgName });
 
   return orgSnapshort.id;
 }
@@ -75,3 +73,11 @@ export type Converter<T> = {
   toFirestore: (model: T) => any;
   fromFirestore: (snapshot: any, options: any) => T;
 };
+
+// Create the page using pageName and OrgId
+export async function createPage(pageName: string, orgId: string) {
+  const pageCollection = collection(db, "organizations", orgId, "pages");
+  var pageSnapShot = await addDoc(pageCollection, { name: pageName });
+
+  return pageSnapShot.id;
+}

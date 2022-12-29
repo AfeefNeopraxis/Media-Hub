@@ -2,7 +2,7 @@ import HeadSection from "../HeadSection";
 import s from "./Body.module.css";
 import EditPage from "../../pages/EditPage";
 import TabBar from "../Common/TabBar";
-import Uploads from "../../pages/UploadsPage/UploadsPage";
+import UploadsPage from "../../pages/UploadsPage/UploadsPage";
 import CommingSoon from "../../pages/CommingSoonPage";
 import EmptyBox from "../EmptyBox/EmptyBox";
 import { Route, Routes } from "react-router-dom";
@@ -22,7 +22,7 @@ export type Tab = {
 const Body = () => {
   const tabAndBody: TabAndBody[] = [
     { link: "/edit", body: <EditPage />, name: "Edit" },
-    { link: "/uploads", body: <Uploads />, name: "Uploads" },
+    { link: "/uploads", body: <UploadsPage />, name: "Uploads" },
     { link: "/preview", body: <EmptyBox />, name: "Preview" },
     { link: "/comming-soon", body: <CommingSoon />, name: "Comming_soon" },
   ];

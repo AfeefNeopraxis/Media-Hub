@@ -1,6 +1,6 @@
 export type idName = {
-  id: String;
-  name: String;
+  id: string;
+  name: string;
 };
 
 const IdNameConverter = {

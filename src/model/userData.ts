@@ -1,12 +1,12 @@
 import { idName } from "./idAndName";
 
 export type userData = {
-  name: String;
-  email: String;
+  name: string;
+  email: string;
   organizations?: {
-    id: String;
-    name: String;
-    pages?: idName[];
+    id: string;
+    name: string;
+    pages: idName[];
   }[];
 };
 

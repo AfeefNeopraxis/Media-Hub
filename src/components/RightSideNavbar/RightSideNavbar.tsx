@@ -6,9 +6,9 @@ import HeadSection from "../HeadSection";
 import s from "./RightSideNavbar.module.css";
 
 const RightSideNavbar = ({ children }: any) => {
-  const appContext = useContext(AppContext)
-  
-  const orgName = appContext.user?.organizations?.at(0)?.name.substring(0,1);
+  const { user } = useContext(AppContext)
+
+  const orgName = user?.organizations?.at(0)?.name.substring(0, 1);
 
   return (
     <div className="w-16">
