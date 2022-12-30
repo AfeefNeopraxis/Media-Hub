@@ -7,92 +7,92 @@ const uploadData: Array<{
     title: string;
   }[];
 }> = [
-  {
-    sectionName: "User Uploads",
-    contents: [
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1670777361177-7ea502ee059d",
-        title: "Learn",
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1660727803635-1fbff87eaf50",
-        title: "This is not",
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1670747375356-6efaa71ec623",
-        title: "Uploaded by me",
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1670784124861-0e8d1ef1fab7",
-        title: "Soooryaj",
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1666214275172-ccc3b98e5519",
-        title: "Annoyn",
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1670787053502-ad4b741ef37a",
-        title: "More comming",
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1670795635018-d774a2b9e07d",
-        title: "Soooryaj",
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1650361128424-00e941139e5d",
-        title: "Annoyn",
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1661956602868-6ae368943878",
-        title: "More comming",
-      },
-    ],
-  },
-  {
-    sectionName: "Bussiness Uploads",
-    contents: [
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1663490651503-160895b5fa3b",
-        title: "Learn",
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1669135021161-ada3732f65f4",
-        title: "This is not",
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1669135021167-da873b6d73ab",
-        title: "Uploaded by me",
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1668253809615-cff40cd3cb1d",
-        title: "Soooryaj",
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1669463597861-cf714822c204",
-        title: "Annoyn",
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1670624371777-d902868995d7",
-        title: "More comming",
-      },
-    ],
-  },
-];
+    {
+      sectionName: "User Uploads",
+      contents: [
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1670777361177-7ea502ee059d",
+          title: "Learn",
+        },
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1660727803635-1fbff87eaf50",
+          title: "This is not",
+        },
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1670747375356-6efaa71ec623",
+          title: "Uploaded by me",
+        },
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1670784124861-0e8d1ef1fab7",
+          title: "Soooryaj",
+        },
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1666214275172-ccc3b98e5519",
+          title: "Annoyn",
+        },
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1670787053502-ad4b741ef37a",
+          title: "More comming",
+        },
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1670795635018-d774a2b9e07d",
+          title: "Soooryaj",
+        },
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1650361128424-00e941139e5d",
+          title: "Annoyn",
+        },
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1661956602868-6ae368943878",
+          title: "More comming",
+        },
+      ],
+    },
+    {
+      sectionName: "Bussiness Uploads",
+      contents: [
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1663490651503-160895b5fa3b",
+          title: "Learn",
+        },
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1669135021161-ada3732f65f4",
+          title: "This is not",
+        },
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1669135021167-da873b6d73ab",
+          title: "Uploaded by me",
+        },
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1668253809615-cff40cd3cb1d",
+          title: "Soooryaj",
+        },
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1669463597861-cf714822c204",
+          title: "Annoyn",
+        },
+        {
+          imageSrc:
+            "https://images.unsplash.com/photo-1670624371777-d902868995d7",
+          title: "More comming",
+        },
+      ],
+    },
+  ];
 
 const UploadsPage = () => {
   return (

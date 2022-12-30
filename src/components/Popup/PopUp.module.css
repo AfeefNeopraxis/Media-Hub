@@ -1,0 +1,29 @@
+.container {
+    @apply 
+    fixed w-screen h-screen backdrop-blur-sm left-0 top-0
+    flex justify-center items-center inset-0 z-50 
+    outline-none focus:outline-none bg-no-repeat bg-center bg-cover
+}
+
+.outside{
+    @apply absolute bg-black opacity-50 inset-0 z-0
+}
+
+.content{
+    @apply
+    relative w-full max-w-xs sm:max-w-lg p-5 mx-auto my-auto 
+    rounded-xl shadow-lg  bg-white dark:bg-[#F2EBE1]
+    animate-popup 
+}
+
+.btnCancel{
+    @apply
+    mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border 
+    text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100
+}
+
+.btnAccept{
+    @apply 
+    mb-2 md:mb-0 bg-red-500 border border-red-500 px-5 py-2 text-sm shadow-sm 
+    font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600
+}

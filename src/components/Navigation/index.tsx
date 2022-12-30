@@ -4,6 +4,7 @@ import { AppContext } from "../../helpers/context/appContext";
 import { auth } from "../../helpers/firebase_utils";
 import Button from "../Common/Button";
 import Center from "../Common/Center";
+import PopUp from "../Popup";
 import s from "./Navigation.module.css";
 
 const Navigation = () => {
@@ -15,7 +16,7 @@ const Navigation = () => {
   return (
     <div>
       <Center className="h-28">
-        <Button label="Create New Page" onClick={() => { }} />
+        <PopUp trigger={<Button label="Create New Page" />} />
       </Center>
       <div className={s.container}>
         <h1 className={s.title}>PAGES</h1>
