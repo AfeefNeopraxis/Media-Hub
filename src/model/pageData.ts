@@ -1,9 +1,9 @@
 export type pageData = {
-  name: String;
-  description: String;
-  files: String[];
-  owner: String;
-  editors: String[];
+  name: string;
+  description: string;
+  files: string[];
+  owner: string;
+  editors: string[];
 };
 
 // Firestore data converter

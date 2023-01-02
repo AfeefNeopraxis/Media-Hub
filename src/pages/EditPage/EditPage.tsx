@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import InputText, {
   InputCheckbox,
-  InputTextArea,
+  InputTextArea
 } from "../../components/Common/FormInputs";
+import { AppContext } from "../../helpers/context/appContext";
 import p from "./EditPage.module.css";
 
 type MultipleSelection = {
@@ -15,6 +17,8 @@ type Options = {
 };
 
 const Pages = () => {
+  const { currentPage } = useContext(AppContext);
+
   var choices: MultipleSelection[] = [
     {
       label: "Content type",
@@ -41,10 +45,11 @@ const Pages = () => {
   return (
     <div className={p.container}>
       <form>
-        <InputText label="Title" />
+        <InputText label="Title" value={currentPage?.name} />
         <InputTextArea
           label="Description"
           placeholder="Describe your page here,these will shown for your users while they are browsing these page......"
+          value={currentPage?.description}
         />
         <div>
           <table className="table-fixed w-full h-36">

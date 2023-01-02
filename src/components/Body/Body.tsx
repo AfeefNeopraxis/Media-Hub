@@ -1,15 +1,15 @@
-import HeadSection from "../HeadSection";
-import s from "./Body.module.css";
-import EditPage from "../../pages/EditPage";
-import TabBar from "../Common/TabBar";
-import UploadsPage from "../../pages/UploadsPage/UploadsPage";
-import CommingSoon from "../../pages/CommingSoonPage";
-import EmptyBox from "../EmptyBox/EmptyBox";
-import { Route, Routes } from "react-router-dom";
-import Navigation from "../Navigation";
 import { useContext } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { AppContext } from "../../helpers/context/appContext";
+import CommingSoon from "../../pages/CommingSoonPage";
+import EditPage from "../../pages/EditPage";
+import UploadsPage from "../../pages/UploadsPage/UploadsPage";
 import Center from "../Common/Center";
+import TabBar from "../Common/TabBar";
+import EmptyBox from "../EmptyBox/EmptyBox";
+import HeadSection from "../HeadSection";
+import Navigation from "../Navigation";
+import s from "./Body.module.css";
 
 type TabAndBody = {
   name: String;
@@ -41,21 +41,27 @@ const Body = () => {
       {/* The Body section */}
       {
         <div className={s.rootContainer}>
-          <HeadSection>
-            <TabBar tabs={tabAndBody} />
-          </HeadSection>
-          <hr></hr>
+          {currentPage &&
+            <>
+              <HeadSection><TabBar tabs={tabAndBody} /></HeadSection>
+              <hr></hr>
+            </>
+          }
           {
             currentPage ?
               <Routes>
                 {tabAndBody.map((tb) => (
                   <Route key={tb.link} path={tb.link} element={tb.body} />
                 ))}
-                <Route path="*" element={<div>nothing</div>} />
+                <Route path="*" element={<Navigate to={tabAndBody.at(0)?.link!} />} />
               </Routes>
               :
-              <Center>
-                <p>Loading Page Data</p>
+              <Center >
+                <div className="w-1/5">
+                  <img
+                    src={`./images/${["wait_in_line", "blank_canvas", "empty_street", "experience_design"][Math.floor(Math.random() * 4)]}.svg`}
+                    alt={"hai"} />
+                </div>
               </Center>
           }
         </div>

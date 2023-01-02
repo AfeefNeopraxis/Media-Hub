@@ -9,8 +9,10 @@ const InputText = ({
   label,
   inputRef,
   required = false,
+  value
 }: {
   label: string;
+  value?: string | undefined
   inputRef?: LegacyRef<HTMLInputElement> | undefined;
   required?: boolean;
 }) => (
@@ -23,6 +25,7 @@ const InputText = ({
         "mt-1 px-3 py-2 w-full rounded-md  bg-white border border-slate-300 placeholder-slate-400  sm:text-sm  mb-2.5"
       }
       placeholder={`Enter your ${label}`}
+      value={value}
       required={required}
       ref={inputRef}
     />
@@ -34,13 +37,16 @@ export default InputText;
 export const InputTextArea = ({
   label,
   placeholder,
+  value,
 }: {
   label: string;
+  value?: string;
   placeholder?: string;
 }) => (
   <div className="block">
     <label className={"block text-sm text-slate-700 font-bold"}>{label}</label>
     <textarea
+      value={value}
       rows={8}
       className={
         "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300  dark:border-slate-300 placeholder-slate-400 dark:text-black mb-2.5 resize-none;"
