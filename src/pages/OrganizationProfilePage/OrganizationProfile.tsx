@@ -13,8 +13,6 @@ const OrganizationProfile = () => {
 
   const pageNameRef = useRef<HTMLInputElement>(null);
 
-  console.log('afeef', user?.organizations?.at(0)?.pages)
-
   // Prompt the user to create a page if there is no page available yet
   if (user?.organizations?.at(0)?.pages.length === 0)
     return (

@@ -6,6 +6,6 @@
     @apply my-2 font-bold text-lg  border-b-8 border-white w-11/12  ;
 }
 
-.list li{
+.item{
     @apply text-gray-500 pb-2.5 hover:bg-[#CAC3B8] hover:text-black hover:font-bold ;
 }

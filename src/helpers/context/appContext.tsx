@@ -20,7 +20,7 @@ type Action =
 type State = {
     user: userData | null,
     currentPage: (pageData & { id: string, orgId: string }) | null,
-    allFetchedPages: (pageData & { id: string, orgId: string })[],
+    allFetchedPages: Set<pageData & { id: string, orgId: string }>,
     isPageLoading: boolean,
     isUserLoading: boolean,
 };
@@ -28,7 +28,7 @@ type State = {
 const initialValue: State = {
     user: null,
     currentPage: null,
-    allFetchedPages: [],
+    allFetchedPages: new Set(),
     isPageLoading: false,
     isUserLoading: true,
 }
@@ -37,7 +37,7 @@ const initialValue: State = {
 export const AppContext =
     createContext<
         State & {
-            fetchPage: (pageId: string, organizationId: string) => void,
+            fetchPage: (pageId: string) => void,
             createPage: (pageName: string) => void,
         }
     >({
@@ -51,7 +51,7 @@ const reducer = (state: State, action: Action): State => {
         case "pageFetchInitialized":
             return { ...state, isPageLoading: true, currentPage: null };
         case "pageFetchCompleted":
-            state.allFetchedPages.push(action.page)
+            state.allFetchedPages.add(action.page)
             return { ...state, isPageLoading: false, currentPage: action.page }
         case "updateUser":
             return { ...state, isUserLoading: false, user: action.user }
@@ -83,37 +83,36 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
 
     // function to fetch the page data from firestore
     // supply the page data on demand
-    const fetchPage = async (pageId: string, orgId: string) => {
+    const fetchPage = async (pageId: string,) => {
+
+        var orgId = state.user?.organizations?.at(0)?.id
         dispatch({ type: "pageFetchInitialized" })
         // All once fetched pages from firestore is stored in "pages" variable
         // So, when the user demands a page, first check whether it is already fetched or not
         // It may be in already available in pages variable
 
+        var page = Array.from(state.allFetchedPages).find(page => page.id === pageId && page.orgId === orgId)
 
-        var page = state.allFetchedPages.find(page => page.id === pageId && page.orgId === orgId)
         if (page) {
-            // return page;
+            dispatch({ type: "pageFetchCompleted", page })
+            return;
         }
 
 
         // App has not yet fetched the page data with current values in pageId and orgId
         // Lets get it from firestore
         // const fetchData = async () => {
-        const docRef = doc(db, "organization", orgId, "pages", pageId).withConverter(pageConverter);
+        const docRef = doc(db, "organizations", `${orgId}`, "pages", pageId).withConverter(pageConverter);
         const docSnap = await getDoc(docRef);
-
         if (docSnap.exists()) {
-
             const page = docSnap.data();
 
+            dispatch({ type: "pageFetchCompleted", page: { ...page, id: pageId, orgId: orgId! } })
 
-            dispatch({ type: "pageFetchCompleted", page: { ...page, id: pageId, orgId: orgId } })
         } else {
             // doc.data() will be undefined in this case
         }
-        // };
-        // fetchData();
-
+        return;
     }
 
     useEffect(() => {

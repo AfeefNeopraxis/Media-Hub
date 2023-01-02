@@ -9,7 +9,8 @@ import s from "./Navigation.module.css";
 
 const Navigation = () => {
   const [signOut, loading, error] = useSignOut(auth);
-  const { user } = useContext(AppContext)
+  const { user, fetchPage } = useContext(AppContext)
+
 
   if (error) return <p>Error: {error.message}</p>;
   if (loading) return <p>Loading from Navigation...</p>;
@@ -21,7 +22,16 @@ const Navigation = () => {
       <div className={s.container}>
         <h1 className={s.title}>PAGES</h1>
         <ul className={s.list}>
-          {user?.organizations?.at(0)?.pages?.map(page => <li key={page.id}>{page.name}</li>)}
+          {user?.organizations?.at(0)?.pages?.map(page => (
+            <li key={page.id}
+              className={s.item}
+              onClick={() => {
+                fetchPage(page.id);
+              }}
+            >
+              {page.name}
+            </li>
+          ))}
         </ul>
       </div>
       <Center className="h-28">
